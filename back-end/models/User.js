@@ -23,8 +23,8 @@ module.exports = function () {
         date_registered: {
             type: Date,
             required: true,
-            dafault: Date.now()
+            default: Date.now()
         }
     })
-    return moongose.model('User', schema, 'users')
+    return mongoose.model('User', schema, 'users')
 }
