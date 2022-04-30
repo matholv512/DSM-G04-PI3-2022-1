@@ -32,4 +32,8 @@ app.use('/user', user)
 const assessment = require('./routes/assessment')
 app.use('/assessment', assessment)
 /******************************************************* */
+
+const login = require('.routes/login')
+app.use('/login', login)
+
 module.exports = app;
