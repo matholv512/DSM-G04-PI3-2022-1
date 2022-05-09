@@ -1,19 +1,18 @@
 // Carrega as variáveis de ambiente do arquivo .env
 require('dotenv').config()
 
-// Exibindo as variáveis de ambiente no console(teste)
-// console.log(process.env)
+// Exibindo as variáveis de ambiente no console (teste)
+//console.log(process.env)
 
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-
 var app = express();
 
-const dbConnection = require('./confg/database')
-dbConnection()
+const dbConnection = require('./config/database');
+dbConnection();
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -21,7 +20,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-/********************** ROTAS ************************** */
+/****************************** ROTAS ******************************/
 
 const glossary = require('./routes/glossary')
 app.use('/glossary', glossary)
@@ -31,9 +30,16 @@ app.use('/user', user)
 
 const assessment = require('./routes/assessment')
 app.use('/assessment', assessment)
-/******************************************************* */
 
-const login = require('.routes/login')
-app.use('/login', login)
+const question_group = require('./routes/question_group')
+app.use('/question-group', question_group)
+
+const question = require('./routes/question')
+app.use('/question', question)
+
+const answer = require('./routes/answer')
+app.use('/answer', answer)
+
+/*******************************************************************/
 
 module.exports = app;

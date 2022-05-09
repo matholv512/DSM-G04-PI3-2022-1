@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-module.exports = function () {
+module.exports = function() {
     const schema = mongoose.Schema({
         group: {
             type: String,
@@ -12,5 +12,5 @@ module.exports = function () {
         }
     })
 
-    return mongoose.model('QuestionGroup', schema, 'question_groups')
+    return mongoose.model('QuestionGroup', schema, 'question_group')
 }

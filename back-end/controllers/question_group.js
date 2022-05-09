@@ -1,12 +1,12 @@
 // importa o model correspondente 
-const Glossary = require('../models/Glossary')()
+const QuestionGroup = require('../models/QuestionGroup')()
 
 const controller = {}  // objeto vazio 
 
 // Função que será chamada para criar entrada no Glossário
 controller.create = async(req, res) => {
     try{
-        await Glossary.create(req.body)
+        await QuestionGroup.create(req.body)
         // HTTP 201: Created
         res.status(201).end()
     }
@@ -20,7 +20,7 @@ controller.create = async(req, res) => {
 // Função que devolve uma listagem das entradas de glossário já inseridas
 controller.retrieve = async (req, res) => {
     try{
-        const result = await Glossary.find({})
+        const result = await QuestionGroup.find({})
         // HTTP 200: OK é implícito aqui 
         res.send(result)
     }
@@ -35,7 +35,7 @@ controller.retrieve = async (req, res) => {
 controller.retrieveOne = async (req, res) => {
     try{
         const id = req.params.id
-        const result = await Glossary.findById(id)
+        const result = await QuestionGroup.findById(id)
         
         // Se tivermos um resultado, retornamos status HTTP 200
         if(result) res.send(result)
@@ -53,7 +53,7 @@ controller.retrieveOne = async (req, res) => {
 controller.update = async (req, res) => {
     try {
         const id = req.body._id
-        const result = await Glossary.findByIdAndUpdate(id, req.body)
+        const result = await QuestionGroup.findByIdAndUpdate(id, req.body)
         // HTTP 204: No content
         if(result) res.status(204).end()
         else res.status(404).end()
@@ -69,7 +69,7 @@ controller.update = async (req, res) => {
 controller.delete = async (req, res) => {
     try {
         const id = req.body._id
-        const result = await Glossary.findByIdAndDelete(id, req.body)
+        const result = await QuestionGroup.findByIdAndDelete(id, req.body)
         if(result) res.status(204).end()
         else res.status(404).end()
     }

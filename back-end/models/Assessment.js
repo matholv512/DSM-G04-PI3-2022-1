@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 module.exports = function() {
-    const schema = mongoose.Schema ({
+    const schema = mongoose.Schema({
         datetime: {
             type: Date,
             required: true,
@@ -22,5 +22,5 @@ module.exports = function() {
         }
     })
 
-    return mongoose.model('Assessment', schema, 'assessments')
+    return mongoose.model('Assessment', schema, 'assessment')
 }
